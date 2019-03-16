@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import web3 from './utils/web3Provider';
-import simpleContract from './utils/exporter';
+import contractInfo from './utils/contractsInfo';
 import './App.css';
 
 
@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   init = async () => {
-    let contract = await new web3.eth.Contract(simpleContract.abi, simpleContract.addr);
+    let contract = await new web3.eth.Contract(contractInfo.Test.abi, contractInfo.Test.addr);
     let def = await web3.eth.getAccounts();
     def = def[0];
     console.log(5454548);
@@ -51,8 +51,8 @@ class App extends Component {
           <br/>
           <span role='img' aria-label='hola'>💰</span>
           <button onClick={this.obtain}>Obtener numero ↩️</button>
-          <button onClick={this.guardar}>Guardar numero 💾</button>
-          <label htmlFor="">{this.state.valor}</label>
+          <button onClick={this.guardar}>Guardar numero nuevo💾</button>
+          <h2>Stored number is: {this.state.valor}</h2>
         </header>
       </div>
     );
